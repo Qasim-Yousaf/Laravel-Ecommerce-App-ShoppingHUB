@@ -1,0 +1,128 @@
+<?
+	/*********************************************************************************************\
+	***********************************************************************************************
+	**                                                                                           **
+	**  Platinum Global Solutions                                                                **
+	**  Version 1.0                                                                              **
+	**                                                                                           **
+	**  https://www.scheduler.pgsolx.com                                                         **
+	**                                                                                           **
+	**  Copyright 2005-17 (C) SW3 Solutions                                                      **
+	**  http://www.sw3solutions.com                                                              **
+	**                                                                                           **
+	**  ***************************************************************************************  **
+	**                                                                                           **
+	**  Developer Information:                                                                   **
+	**                                                                                           **
+	**      Name  :  Muhammad Tahir Shahzad                                                      **
+	**      Email :  mtahirshahzad@hotmail.com                                                   **
+	**      Phone :  +92 333 456 0482                                                            **
+	**      URL   :  http://www.mtshahzad.com                                                    **
+	**                                                                                           **
+	***********************************************************************************************
+	\*********************************************************************************************/
+
+	@require_once("../requires/common.php");
+
+	$objDbGlobal = new Database( );
+	$objDb       = new Database( );
+	$objDb2      = new Database( );
+?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<?
+	@include("../includes/meta-tags.php");
+
+	if ($_SESSION['MemberId'] != "" && $_SESSION['Type'] == "D")
+	  redirect("dashboard.php", "ALREADY_LOGGED_IN");
+?>
+  <script type="text/javascript" src="scripts/delegate-login.js"></script>
+</head>
+
+<body>
+
+<div id="MainDiv">
+
+<!--  Header Section Starts Here  -->
+<?
+	@include("../includes/header.php");
+?>
+<!--  Header Section Ends Here  -->
+
+
+<!--  Body Section Starts Here  -->
+  <div id="Body">
+    <div id="BodyDiv">
+
+<!--  Contents Section Starts Here  -->
+      <div id="Contents">
+<?
+	@include("../includes/messages.php");
+?>
+
+        <p id="Text">
+		  <span>Delegate Scheduler Login</span>
+		</p>
+
+		<div id="LoginBox">
+		  <br />
+
+ 		  <form name="frmLogin" id="frmLogin" onsubmit="return false;">
+		    <div id="LoginMsg" class="hidden"></div>
+
+		    <table border="0" cellspacing="0" cellpadding="0" width="100%">
+		      <tr>
+				<td width="100%">
+				  <label class="label" for="txtUsername">Username <input type="text" name="txtUsername" id="txtUsername" value="" maxlength="100" size="38" class="textbox fRight" /><div class="br"></div></label>
+				</td>
+			  </tr>
+			  
+			  <tr height="20">
+				<td colspan="3"></td>
+			  </tr>
+
+			  <tr>
+				<td>
+				  <label class="label" for="txtPassword">Password <input type="password" name="txtPassword" id="txtPassword" value="" maxlength="100" size="38" class="textbox fRight" /><div class="br"></div></label>
+			    </td>
+			  </tr>
+			  
+			  <tr height="20">
+			    <td colspan="3"></td>
+			  </tr>
+
+			  <tr align="center">
+				<td><input type="submit" id="BtnLogin" value=" Login " class="button" /></tr>
+			  </tr>
+			</table>
+ 	      </form>
+ 	    </div>
+      </div>
+<!--  Contents Section Ends Here  -->
+
+    </div>
+  </div>
+<!--  Body Section Ends Here  -->
+
+
+<!--  Footer Section Starts Here  -->
+<?
+	@include("../includes/footer.php");
+?>
+<!--  Footer Section Ends Here  -->
+
+</div>
+
+</body>
+</html>
+<?
+	$objDb->close( );
+	$objDb2->close( );
+	$objDbGlobal->close( );
+
+	@ob_end_flush( );
+?>
